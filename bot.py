@@ -1,60 +1,98 @@
+
 import os
 import time
+import html
 import requests
-import xml.etree.ElementTree as ET
+import feedparser
 
-# Сюда вшиты самые быстрые RSS-ленты агентств
+TOKEN = os.environ["TELEGRAM_TOKEN"]
+CHAT_ID = "7365523999"
+
 FEEDS = {
-    "Anadolu (RU)": "https://aa.com.tr",
-    "Reuters (EN)": "https://reutersagency.com",
-    "Al Jazeera (EN)": "https://aljazeera.com",
-    "Yonhap (EN)": "https://yna.co.kr"
+    "Anadolu RU": "https://www.aa.com.tr/ru/rss/default?cat=guncel",
+    "Reuters EN": "https://news.google.com/rss/search?q=site:reuters.com&hl=en-US&gl=US&ceid=US:en",
+    "Al Jazeera EN": "https://www.aljazeera.com/xml/rss/all.xml",
+    "Yonhap EN": "https://en.yna.co.kr/RSS/news.xml",
 }
 
-TOKEN = os.environ.get("TELEGRAM_TOKEN")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 DB_FILE = "sent_urls.txt"
+session = requests.Session()
+session.headers["User-Agent"] = "Mozilla/5.0"
 
-def get_sent_urls():
-    if os.path.exists(DB_FILE):
-        with open(DB_FILE, "r") as f:
-            return set(f.read().splitlines())
-    return set()
 
-def save_sent_url(url):
-    with open(DB_FILE, "a") as f:
-        f.write(url + "\n")
-
-def send_telegram(text):
-    url = f"https://telegram.org{TOKEN}/sendMessage"
-    payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}
+def send(text):
     try:
-        requests.post(url, json=payload, timeout=10)
-    except Exception as e:
-        print(f"Ошибка отправки: {e}")
+        response = session.post(
+            f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+            json={
+                "chat_id": CHAT_ID,
+                "text": text,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": True,
+            },
+            timeout=20,
+        )
+        data = response.json()
 
-def check_feeds():
-    sent_urls = get_sent_urls()
-    headers = {"User-Agent": "Mozilla/5.0"}
-    
-    for source, feed_url in FEEDS.items():
+        if data.get("ok"):
+            return True
+
+        print("Telegram error:", data.get("description", data))
+    except Exception as error:
+        print("Telegram error:", error)
+
+    return False
+
+
+def main():
+    if not send("✅ Новости-бот запущен"):
+        print("Не удалось отправить тестовое сообщение.")
+        return
+
+    sent = set()
+    if os.path.exists(DB_FILE):
+        with open(DB_FILE, encoding="utf-8") as file:
+            sent = set(file.read().splitlines())
+
+    for source, url in FEEDS.items():
         try:
-            response = requests.get(feed_url, headers=headers, timeout=15)
-            if response.status_code != 200:
+            response = session.get(url, timeout=20)
+            response.raise_for_status()
+            feed = feedparser.parse(response.content)
+
+            if not feed.entries:
+                print(f"{source}: RSS пуст или недоступен")
                 continue
-            
-            root = ET.fromstring(response.content)
-            for item in root.findall(".//item")[:3]: # Проверяем последние 3 новости
-                title = item.find("title").text
-                link = item.find("link").text.strip()
-                
-                if link not in sent_urls:
-                    message = f"🚨 <b>{source} BREAKING:</b>\n\n{title}\n\n🔗 {link}"
-                    send_telegram(message)
-                    save_sent_url(link)
+
+            count = 0
+            for item in feed.entries:
+                link = item.get("link", "").strip()
+                title = item.get("title", "").strip()
+
+                if not link or not title or link in sent:
+                    continue
+
+                message = (
+                    f"📰 <b>{html.escape(source)}</b>\n\n"
+                    f"{html.escape(title)}\n\n"
+                    f"🔗 {html.escape(link, quote=True)}"
+                )
+
+                if send(message):
+                    with open(DB_FILE, "a", encoding="utf-8") as file:
+                        file.write(link + "\n")
+                    sent.add(link)
+                    count += 1
                     time.sleep(1)
-        except Exception as e:
-            print(f"Ошибка парсинга {source}: {e}")
+
+                if count >= 3:
+                    break
+
+            print(f"{source}: отправлено {count}")
+
+        except Exception as error:
+            print(f"{source}: ошибка — {error}")
+
 
 if __name__ == "__main__":
-    check_feeds()
+    main()
