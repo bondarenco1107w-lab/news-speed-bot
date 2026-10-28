@@ -1,0 +1,36 @@
+name: News Flash Parser
+
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Запуск каждую минуту
+  workflow_dispatch: # Кнопка для ручного запуска
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/tools/python@v5
+      with:
+        python-file: 'bot.py'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Bot
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: python bot.py
+
+    - name: Commit history updates
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@://github.com"
+        git add sent_urls.txt || true
+        git commit -m "Update sent news history" || true
+        git push || true
