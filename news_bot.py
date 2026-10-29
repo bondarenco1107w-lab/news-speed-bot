@@ -1,4 +1,4 @@
-import os, re, json, time, html, hashlib, email.utils
+import os, re, json, time, html, hashlib, email.utils, signal
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
@@ -337,7 +337,7 @@ def handle(u):
             on_message(m)
 
 
-def main():
+def run():
     global s
     s = load()
     end = time.time() + RUN_SECONDS
@@ -372,6 +372,18 @@ def main():
             print("error:", repr(e))
             time.sleep(3)
     save()
+
+
+def stop(*a):
+    if s:
+        save()
+    os._exit(0)
+
+
+def main():
+    signal.signal(signal.SIGTERM, stop)
+    signal.signal(signal.SIGINT, stop)
+    run()
 
 
 if __name__ == "__main__":
