@@ -1,1 +1,378 @@
-import base64;exec(base64.b64decode("aW1wb3J0IG9zLCByZSwganNvbiwgdGltZSwgaHRtbCwgaGFzaGxpYiwgZW1haWwudXRpbHMKaW1wb3J0IHhtbC5ldHJlZS5FbGVtZW50VHJlZSBhcyBFVApmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZSwgdGltZXpvbmUKZnJvbSBjb25jdXJyZW50LmZ1dHVyZXMgaW1wb3J0IFRocmVhZFBvb2xFeGVjdXRvcgppbXBvcnQgcmVxdWVzdHMKClRPS0VOID0gb3MuZW52aXJvbi5nZXQoIlRFTEVHUkFNX1RPS0VOIikgb3Igb3MuZW52aXJvblsiQk9UX1RPS0VOIl0KQ0hBVCA9IHN0cihvcy5lbnZpcm9uLmdldCgiQ0hBVF9JRCIpIG9yICI3MzY1NTIzOTk5IikKQVBJID0gZiJodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e1RPS0VOfSIKRiA9ICJzdGF0ZV9uZXdzLmpzb24iClJVTl9TRUNPTkRTID0gMjYwClNDQU5fRVZFUlkgPSAxODAKUFMgPSA2CkhPVF9OID0gMwpQVVNIX01BWCA9IDUKVUEgPSB7IlVzZXItQWdlbnQiOiAiTW96aWxsYS81LjAgKGNvbXBhdGlibGU7IE5ld3NCb3QvMS4wKSJ9CgoKZGVmIGduKHNpdGUsIGxhbmc9ImVuIik6CiAgICBpZiBsYW5nID09ICJydSI6CiAgICAgICAgcmV0dXJuIGYiaHR0cHM6Ly9uZXdzLmdvb2dsZS5jb20vcnNzL3NlYXJjaD9xPXNpdGU6e3NpdGV9K3doZW46MWQmaGw9cnUmZ2w9UlUmY2VpZD1SVTpydSIKICAgIHJldHVybiBmImh0dHBzOi8vbmV3cy5nb29nbGUuY29tL3Jzcy9zZWFyY2g/cT1zaXRlOntzaXRlfSt3aGVuOjFkJmhsPWVuLVVTJmdsPVVTJmNlaWQ9VVM6ZW4iCgoKU1JDID0gewogICAgInJldXRlcnMiOiAoIlJldXRlcnMiLCBbZ24oInJldXRlcnMuY29tIildKSwKICAgICJhcCI6ICgiQVAiLCBbZ24oImFwbmV3cy5jb20iKV0pLAogICAgImJiYyI6ICgiQkJDIiwgWyJodHRwczovL2ZlZWRzLmJiY2kuY28udWsvbmV3cy93b3JsZC9yc3MueG1sIiwgZ24oImJiYy5jb20iKV0pLAogICAgImFqIjogKCJBbCBKYXplZXJhIiwgWyJodHRwczovL3d3dy5hbGphemVlcmEuY29tL3htbC9yc3MvYWxsLnhtbCIsIGduKCJhbGphemVlcmEuY29tIildKSwKICAgICJmMjQiOiAoIkZyYW5jZSAyNCIsIFsiaHR0cHM6Ly93d3cuZnJhbmNlMjQuY29tL2VuL3JzcyIsIGduKCJmcmFuY2UyNC5jb20iKV0pLAogICAgImR3IjogKCJEVyIsIFsiaHR0cHM6Ly9yc3MuZHcuY29tL3JkZi9yc3MtZW4tYWxsIiwgZ24oImR3LmNvbSIpXSksCiAgICAieW5hIjogKCJZb25oYXAiLCBbImh0dHBzOi8vZW4ueW5hLmNvLmtyL1JTUy9uZXdzLnhtbCIsIGduKCJlbi55bmEuY28ua3IiKV0pLAogICAgImFhIjogKCJBQSAoUlUpIiwgWyJodHRwczovL3d3dy5hYS5jb20udHIvcnUvcnNzL2RlZmF1bHQ/Y2F0PWd1bmNlbCIsIGduKCJhYS5jb20udHIvcnUiLCAicnUiKV0pLAp9CkxBQkVMUyA9IHsi8J+UpSDQk9C+0YDRj9GH0LXQtSI6ICJob3QiLCAi8J+GlSDQodCy0LXQttC10LUiOiAiYWxsIiwgIlJldXRlcnMiOiAicmV1dGVycyIsICJBUCI6ICJhcCIsICJCQkMiOiAiYmJjIiwKICAgICAgICAgICJBbCBKYXplZXJhIjogImFqIiwgIkZyYW5jZSAyNCI6ICJmMjQiLCAiRFciOiAiZHciLCAiWW9uaGFwIjogInluYSIsICJBQSAoUlUpIjogImFhIn0KTkFNRVMgPSB7ImhvdCI6ICLwn5SlINCT0L7RgNGP0YfQtdC1IiwgImFsbCI6ICLwn4aVINCh0LLQtdC20LXQtSIsICoqe2s6IHZbMF0gZm9yIGssIHYgaW4gU1JDLml0ZW1zKCl9fQpLQiA9IGpzb24uZHVtcHMoeyJrZXlib2FyZCI6IFsKICAgIFt7InRleHQiOiAi8J+UpSDQk9C+0YDRj9GH0LXQtSJ9LCB7InRleHQiOiAi8J+GlSDQodCy0LXQttC10LUifV0sCiAgICBbeyJ0ZXh0IjogIlJldXRlcnMifSwgeyJ0ZXh0IjogIkFQIn0sIHsidGV4dCI6ICJCQkMifSwgeyJ0ZXh0IjogIkFsIEphemVlcmEifV0sCiAgICBbeyJ0ZXh0IjogIkZyYW5jZSAyNCJ9LCB7InRleHQiOiAiRFcifSwgeyJ0ZXh0IjogIllvbmhhcCJ9LCB7InRleHQiOiAiQUEgKFJVKSJ9XSwKICAgIFt7InRleHQiOiAi8J+UlCDQkNCy0YLQviDQstC60LsifSwgeyJ0ZXh0IjogIvCflJUg0JDQstGC0L4g0LLRi9C60LsifV1dLAogICAgInJlc2l6ZV9rZXlib2FyZCI6IFRydWUsICJvbmVfdGltZV9rZXlib2FyZCI6IFRydWV9KQpIRUxQID0gKCLQmtC90L7Qv9C60Lgg0LLQvdC40LfRgzpcbiIKICAgICAgICAi8J+UpSDQk9C+0YDRj9GH0LXQtSAtINGB0YDQvtGH0L3Ri9C1INC90L7QstC+0YHRgtC4INC4INGB0Y7QttC10YLRiywg0L4g0LrQvtGC0L7RgNGL0YUg0L/QuNGI0YPRgiAzKyDQuNC30LTQsNC90LjRj1xuIgogICAgICAgICLwn4aVINCh0LLQtdC20LXQtSAtINC/0L7RgdC70LXQtNC90LXQtSDRgdC+INCy0YHQtdGFINC40YHRgtC+0YfQvdC40LrQvtCyXG4iCiAgICAgICAgIlJldXRlcnMsIEFQLCBCQkMsIEFsIEphemVlcmEsIEZyYW5jZSAyNCwgRFcsIFlvbmhhcCwgQUEgLSDQu9C10L3RgtCwINC+0LTQvdC+0LPQviDQuNC30LTQsNC90LjRj1xuIgogICAgICAgICLwn5SUINCQ0LLRgtC+INCy0LrQuyAvIPCflJUg0JDQstGC0L4g0LLRi9C60LsgLSDQv9GA0LjRgdGL0LvQsNGC0Ywg0LPQvtGA0Y/Rh9C10LUg0YHQsNC80L7QvNGDIikKQlJFQUsgPSByZS5jb21waWxlKHIiXGIoYnJlYWtpbmd8dXJnZW50fGp1c3QgaW58ZGV2ZWxvcGluZylcYnzRgdGA0L7Rh9C90L580LzQvtC70L3QuNGPIiwgcmUuSSkKU1RPUCA9IHNldCgid2l0aCBmcm9tIHRoYXQgdGhpcyBoYXZlIHdpbGwgYmVlbiB3ZXJlIHRoZWlyIGFib3V0IGFmdGVyIG92ZXIgaW50byBzYXlzIHNhaWQgIgogICAgICAgICAgICJtb3JlIHRoYW4gYW1pZCBhbHNvIHdoYXQgd2hlbiB3aGVyZSB3aGljaCB3aGlsZSB3b3VsZCBjb3VsZCBzaG91bGQgdGhleSB0aGVtICIKICAgICAgICAgICAieW91ciBuZXdzIGxpdmUgdXBkYXRlcyB1cGRhdGUgdmlkZW8gd2F0Y2ggcmVwb3J0IHJlcG9ydHMiLnNwbGl0KCkpCgpjYWNoZSA9IHt9CnMgPSB7fQpzYXZlZCA9ICIiCgoKZGVmIGxvYWQoKToKICAgIHRyeToKICAgICAgICBkID0ganNvbi5sb2FkKG9wZW4oRiwgZW5jb2Rpbmc9InV0Zi04IikpCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIGQgPSB7fQogICAgZC5zZXRkZWZhdWx0KCJvZmZzZXQiLCAwKQogICAgZC5zZXRkZWZhdWx0KCJzZW50IiwgW10pCiAgICBkLnNldGRlZmF1bHQoImF1dG8iLCBUcnVlKQogICAgZC5zZXRkZWZhdWx0KCJpbml0IiwgRmFsc2UpCiAgICByZXR1cm4gZAoKCmRlZiBzYXZlKCk6CiAgICBnbG9iYWwgc2F2ZWQKICAgIGQgPSBqc29uLmR1bXBzKHMsIGVuc3VyZV9hc2NpaT1GYWxzZSwgc29ydF9rZXlzPVRydWUpCiAgICBpZiBkICE9IHNhdmVkOgogICAgICAgIG9wZW4oRiwgInciLCBlbmNvZGluZz0idXRmLTgiKS53cml0ZShkKQogICAgICAgIHNhdmVkID0gZAoKCmRlZiB0ZyhtZXRob2QsICoqZGF0YSk6CiAgICB0cnk6CiAgICAgICAgcmV0dXJuIHJlcXVlc3RzLnBvc3QoZiJ7QVBJfS97bWV0aG9kfSIsIGRhdGE9ZGF0YSwgdGltZW91dD0yMCkuanNvbigpCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIHJldHVybiB7fQoKCmRlZiBzYXkodGV4dCwgbWFya3VwPU5vbmUsIGtiPUZhbHNlKToKICAgIGQgPSB7ImNoYXRfaWQiOiBDSEFULCAidGV4dCI6IHRleHQsICJwYXJzZV9tb2RlIjogIkhUTUwiLCAiZGlzYWJsZV93ZWJfcGFnZV9wcmV2aWV3IjogInRydWUifQogICAgaWYgbWFya3VwIG9yIGtiOgogICAgICAgIGRbInJlcGx5X21hcmt1cCJdID0gbWFya3VwIG9yIEtCCiAgICByZXR1cm4gYm9vbCh0Zygic2VuZE1lc3NhZ2UiLCAqKmQpLmdldCgib2siKSkKCgpkZWYgYWdvKHRzKToKICAgIHNlYyA9IG1heCgwLCBpbnQodGltZS50aW1lKCkgLSB0cykpCiAgICBpZiBzZWMgPj0gODY0MDA6CiAgICAgICAgcmV0dXJuIGYie3NlYyAvLyA4NjQwMH0g0LQiCiAgICBpZiBzZWMgPj0gMzYwMDoKICAgICAgICByZXR1cm4gZiJ7c2VjIC8vIDM2MDB9INGHIgogICAgaWYgc2VjID49IDYwOgogICAgICAgIHJldHVybiBmIntzZWMgLy8gNjB9INC80LjQvSIKICAgIHJldHVybiAi0YLQvtC70YzQutC+INGH0YLQviIKCgpkZWYgcGRhdGUodCk6CiAgICBpZiBub3QgdCBvciBub3QgdC5zdHJpcCgpOgogICAgICAgIHJldHVybiBOb25lCiAgICB0ID0gdC5zdHJpcCgpCiAgICB0cnk6CiAgICAgICAgZCA9IGVtYWlsLnV0aWxzLnBhcnNlZGF0ZV90b19kYXRldGltZSh0KQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICB0cnk6CiAgICAgICAgICAgIGQgPSBkYXRldGltZS5mcm9taXNvZm9ybWF0KHQucmVwbGFjZSgiWiIsICIrMDA6MDAiKSkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgaWYgZC50emluZm8gaXMgTm9uZToKICAgICAgICBkID0gZC5yZXBsYWNlKHR6aW5mbz10aW1lem9uZS51dGMpCiAgICByZXR1cm4gZC50aW1lc3RhbXAoKQoKCmRlZiBsbih0YWcpOgogICAgcmV0dXJuIHRhZy5zcGxpdCgifSIpWy0xXS5sb3dlcigpIGlmIGlzaW5zdGFuY2UodGFnLCBzdHIpIGVsc2UgIiIKCgpkZWYgY2xlYW4odCk6CiAgICB0ID0gaHRtbC51bmVzY2FwZShyZS5zdWIociI8W14+XSs+IiwgIiAiLCBodG1sLnVuZXNjYXBlKHQpKSkKICAgIHQgPSByZS5zdWIociJccysiLCAiICIsIHQpLnN0cmlwKCkKICAgIHJldHVybiB0WzoyMzBdLnJzcGxpdCgiICIsIDEpWzBdICsgIuKApiIgaWYgbGVuKHQpID4gMjMwIGVsc2UgdAoKCmRlZiBwYXJzZV9mZWVkKGIsIGtleSwgZ29vZ2xlKToKICAgIHJvb3QgPSBFVC5mcm9tc3RyaW5nKGIpCiAgICBvdXQgPSBbXQogICAgZm9yIGVsIGluIHJvb3QuaXRlcigpOgogICAgICAgIGlmIGxuKGVsLnRhZykgbm90IGluICgiaXRlbSIsICJlbnRyeSIpOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHRpdGxlID0gbGluayA9IE5vbmUKICAgICAgICB0cyA9IE5vbmUKICAgICAgICBkZXNjID0gIiIKICAgICAgICBmb3IgYyBpbiBlbDoKICAgICAgICAgICAgbiA9IGxuKGMudGFnKQogICAgICAgICAgICBpZiBuIGluICgiZGVzY3JpcHRpb24iLCAic3VtbWFyeSIsICJlbmNvZGVkIiwgImNvbnRlbnQiKSBhbmQgbm90IGRlc2M6CiAgICAgICAgICAgICAgICBkZXNjID0gY2xlYW4oYy50ZXh0IG9yICIiKQogICAgICAgICAgICBlbGlmIG4gPT0gInRpdGxlIjoKICAgICAgICAgICAgICAgIHRpdGxlID0gaHRtbC51bmVzY2FwZSgoYy50ZXh0IG9yICIiKS5zdHJpcCgpKQogICAgICAgICAgICBlbGlmIG4gPT0gImxpbmsiIGFuZCBub3QgbGluazoKICAgICAgICAgICAgICAgIGxpbmsgPSAoYy50ZXh0IG9yICIiKS5zdHJpcCgpIG9yIGMuZ2V0KCJocmVmIikKICAgICAgICAgICAgZWxpZiBuIGluICgicHViZGF0ZSIsICJwdWJsaXNoZWQiLCAidXBkYXRlZCIsICJkYXRlIikgYW5kIHRzIGlzIE5vbmU6CiAgICAgICAgICAgICAgICB0cyA9IHBkYXRlKGMudGV4dCkKICAgICAgICBpZiBub3QgdGl0bGUgb3Igbm90IGxpbms6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgaWYgZ29vZ2xlOgogICAgICAgICAgICB0aXRsZSA9IHJlLnN1YihyIlxzKy1ccytbXi1dezIsNDB9JCIsICIiLCB0aXRsZSkKICAgICAgICAgICAgZGVzYyA9ICIiCiAgICAgICAgaWYgZGVzYyBhbmQgKGxlbihkZXNjKSA8IDQwIG9yIGRlc2MubG93ZXIoKS5zdGFydHN3aXRoKHRpdGxlLmxvd2VyKClbOjQwXSkpOgogICAgICAgICAgICBkZXNjID0gIiIKICAgICAgICBvdXQuYXBwZW5kKHsic3JjIjoga2V5LCAidGl0bGUiOiB0aXRsZSwgImxpbmsiOiBsaW5rLCAidHMiOiB0cyBvciB0aW1lLnRpbWUoKSwgImRlc2MiOiBkZXNjLAogICAgICAgICAgICAgICAgICAgICJpZCI6IGhhc2hsaWIuc2hhMSgobGluayBvciB0aXRsZSkuZW5jb2RlKCkpLmhleGRpZ2VzdCgpWzoxMl19KQogICAgcmV0dXJuIG91dAoKCmRlZiBmZXRjaChrZXkpOgogICAgZm9yIHVybCBpbiBTUkNba2V5XVsxXToKICAgICAgICB0cnk6CiAgICAgICAgICAgIHIgPSByZXF1ZXN0cy5nZXQodXJsLCBoZWFkZXJzPVVBLCB0aW1lb3V0PTE1KQogICAgICAgICAgICBpZiByLnN0YXR1c19jb2RlICE9IDIwMDoKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIGl0ZW1zID0gcGFyc2VfZmVlZChyLmNvbnRlbnQsIGtleSwgIm5ld3MuZ29vZ2xlLmNvbSIgaW4gdXJsKQogICAgICAgICAgICBpZiBpdGVtczoKICAgICAgICAgICAgICAgIHJldHVybiBrZXksIGl0ZW1zCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgY29udGludWUKICAgIHJldHVybiBrZXksIFtdCgoKZGVmIGNvbGxlY3QoZm9yY2U9RmFsc2UpOgogICAgbm93ID0gdGltZS50aW1lKCkKICAgIG5lZWQgPSBbayBmb3IgayBpbiBTUkMgaWYgZm9yY2Ugb3IgayBub3QgaW4gY2FjaGUgb3Igbm93IC0gY2FjaGVba11bMF0gPiAxMjBdCiAgICBpZiBuZWVkOgogICAgICAgIHdpdGggVGhyZWFkUG9vbEV4ZWN1dG9yKG1heF93b3JrZXJzPTgpIGFzIGV4OgogICAgICAgICAgICBmb3IgaywgaXRlbXMgaW4gZXgubWFwKGZldGNoLCBuZWVkKToKICAgICAgICAgICAgICAgIGlmIGl0ZW1zIG9yIGsgbm90IGluIGNhY2hlOgogICAgICAgICAgICAgICAgICAgIGNhY2hlW2tdID0gKG5vdywgaXRlbXMpCiAgICBvdXQgPSBbXQogICAgZm9yIGsgaW4gU1JDOgogICAgICAgIG91dCArPSBjYWNoZS5nZXQoaywgKDAsIFtdKSlbMV0KICAgIHJldHVybiBvdXQKCgpkZWYgdG9rcyh0KToKICAgIHJldHVybiB7dyBmb3IgdyBpbiByZS5maW5kYWxsKHIiW0EtWmEtetCQLdCv0LAt0Y8wLTldezQsfSIsIHQubG93ZXIoKSkgaWYgdyBub3QgaW4gU1RPUH0KCgpkZWYgc2FtZShhLCBiKToKICAgIHNoID0gbGVuKGEgJiBiKQogICAgcmV0dXJuIHNoID49IDMgYW5kIHNoIC8gbWF4KDEsIG1pbihsZW4oYSksIGxlbihiKSkpID49IDAuNAoKCmRlZiBlbnQoaXRlbXMpOgogICAgaXRlbXMgPSBzb3J0ZWQoaXRlbXMsIGtleT1sYW1iZGEgeDogLXhbInRzIl0pCiAgICBzcmNzID0gW10KICAgIGZvciBpIGluIGl0ZW1zOgogICAgICAgIGlmIFNSQ1tpWyJzcmMiXV1bMF0gbm90IGluIHNyY3M6CiAgICAgICAgICAgIHNyY3MuYXBwZW5kKFNSQ1tpWyJzcmMiXV1bMF0pCiAgICByID0gaXRlbXNbMF0KICAgIGQgPSBuZXh0KChpWyJkZXNjIl0gZm9yIGkgaW4gaXRlbXMgaWYgaS5nZXQoImRlc2MiKSksICIiKQogICAgcmV0dXJuIHsidGl0bGUiOiByWyJ0aXRsZSJdLCAibGluayI6IHJbImxpbmsiXSwgInRzIjogclsidHMiXSwgInNyY3MiOiBzcmNzLCAiZGVzYyI6IGQsCiAgICAgICAgICAgICJpZHMiOiBbaVsiaWQiXSBmb3IgaSBpbiBpdGVtc119CgoKZGVmIGhvdF9lbnRyaWVzKGl0ZW1zKToKICAgIG5vdyA9IHRpbWUudGltZSgpCiAgICByZWMgPSBbaSBmb3IgaSBpbiBpdGVtcyBpZiBub3cgLSBpWyJ0cyJdIDwgODY0MDBdCiAgICByZWMuc29ydChrZXk9bGFtYmRhIHg6IC14WyJ0cyJdKQogICAgdGsgPSBbdG9rcyhpWyJ0aXRsZSJdKSBmb3IgaSBpbiByZWNdCiAgICBjbCA9IFtdCiAgICBmb3IgbiwgaSBpbiBlbnVtZXJhdGUocmVjKToKICAgICAgICBmb3IgYyBpbiBjbDoKICAgICAgICAgICAgaWYgYW55KHNhbWUodGtbbl0sIHRrW21dKSBmb3IgbSBpbiBjKToKICAgICAgICAgICAgICAgIGMuYXBwZW5kKG4pCiAgICAgICAgICAgICAgICBicmVhawogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGNsLmFwcGVuZChbbl0pCiAgICBvdXQgPSBbXQogICAgZm9yIGMgaW4gY2w6CiAgICAgICAgaXRzID0gW3JlY1ttXSBmb3IgbSBpbiBjXQogICAgICAgIGUgPSBlbnQoaXRzKQogICAgICAgIGlmIGxlbihlWyJzcmNzIl0pID49IEhPVF9OIG9yIGFueShCUkVBSy5zZWFyY2goaVsidGl0bGUiXSkgZm9yIGkgaW4gaXRzKToKICAgICAgICAgICAgb3V0LmFwcGVuZChlKQogICAgb3V0LnNvcnQoa2V5PWxhbWJkYSBlOiAtZVsidHMiXSkKICAgIHJldHVybiBvdXQKCgpkZWYgZW50cmllc19mb3Ioa2V5LCBmb3JjZT1GYWxzZSk6CiAgICBpdGVtcyA9IGNvbGxlY3QoZm9yY2UpCiAgICBpZiBrZXkgPT0gImhvdCI6CiAgICAgICAgcmV0dXJuIGhvdF9lbnRyaWVzKGl0ZW1zKQogICAgaWYga2V5ID09ICJhbGwiOgogICAgICAgIGl0cyA9IFtpIGZvciBpIGluIGl0ZW1zIGlmIHRpbWUudGltZSgpIC0gaVsidHMiXSA8IDg2NDAwXQogICAgZWxzZToKICAgICAgICBpdHMgPSBbaSBmb3IgaSBpbiBpdGVtcyBpZiBpWyJzcmMiXSA9PSBrZXldCiAgICBpdHMuc29ydChrZXk9bGFtYmRhIHg6IC14WyJ0cyJdKQogICAgcmV0dXJuIFtlbnQoW2ldKSBmb3IgaSBpbiBpdHNbOjYwXV0KCgpkZWYgbGluZShlLCBrZXksIG4pOgogICAgdCA9IGh0bWwuZXNjYXBlKGVbInRpdGxlIl1bOjE3MF0pCiAgICB1ID0gaHRtbC5lc2NhcGUoZVsibGluayJdLCBxdW90ZT1UcnVlKQogICAgaWYgbGVuKGVbInNyY3MiXSkgPj0gSE9UX046CiAgICAgICAgbWV0YSA9ICLwn5SlICIgKyAiLCAiLmpvaW4oZVsic3JjcyJdWzo1XSkKICAgIGVsaWYga2V5IGluICgiaG90IiwgImFsbCIpOgogICAgICAgIG1ldGEgPSAiLCAiLmpvaW4oZVsic3JjcyJdWzo0XSkKICAgIGVsc2U6CiAgICAgICAgbWV0YSA9ICIiCiAgICBtZXRhID0gZiLwn5WQIHthZ28oZVsndHMnXSl9IiArICgiIMK3ICIgKyBodG1sLmVzY2FwZShtZXRhKSBpZiBtZXRhIGVsc2UgIiIpCiAgICBkID0gKCJcbjxpPiIgKyBodG1sLmVzY2FwZShlWyJkZXNjIl0pICsgIjwvaT4iKSBpZiBlLmdldCgiZGVzYyIpIGVsc2UgIiIKICAgIHJldHVybiBmJ3tufS4gPGEgaHJlZj0ie3V9Ij48Yj57dH08L2I+PC9hPntkfVxue21ldGF9JwoKCmRlZiByZW5kZXIoa2V5LCBwYWdlLCBmb3JjZT1GYWxzZSk6CiAgICBlcyA9IGVudHJpZXNfZm9yKGtleSwgZm9yY2UpCiAgICBuID0gbWF4KDEsIChsZW4oZXMpICsgUFMgLSAxKSAvLyBQUykKICAgIHBhZ2UgPSBtaW4obWF4KHBhZ2UsIDApLCBuIC0gMSkKICAgIGNodW5rID0gZXNbcGFnZSAqIFBTOihwYWdlICsgMSkgKiBQU10KICAgIGhlYWQgPSBmIjxiPntodG1sLmVzY2FwZShOQU1FU1trZXldKX08L2I+IMK3IHtwYWdlICsgMX0ve259IgogICAgYm9keSA9IFtsaW5lKGUsIGtleSwgcGFnZSAqIFBTICsgayArIDEpIGZvciBrLCBlIGluIGVudW1lcmF0ZShjaHVuayldIG9yIFsi0J/QvtC60LAg0L3QuNGH0LXQs9C+INC90LXRgi4iXQogICAgcm93ID0gW10KICAgIGlmIHBhZ2UgPiAwOgogICAgICAgIHJvdy5hcHBlbmQoeyJ0ZXh0IjogIuKXgCIsICJjYWxsYmFja19kYXRhIjogZiJwOntrZXl9OntwYWdlIC0gMX0ifSkKICAgIHJvdy5hcHBlbmQoeyJ0ZXh0IjogIvCflIQiLCAiY2FsbGJhY2tfZGF0YSI6IGYicjp7a2V5fTp7cGFnZX0ifSkKICAgIGlmIHBhZ2UgPCBuIC0gMToKICAgICAgICByb3cuYXBwZW5kKHsidGV4dCI6ICLilrYiLCAiY2FsbGJhY2tfZGF0YSI6IGYicDp7a2V5fTp7cGFnZSArIDF9In0pCiAgICByZXR1cm4gaGVhZCArICJcblxuIiArICJcblxuIi5qb2luKGJvZHkpLCBqc29uLmR1bXBzKHsiaW5saW5lX2tleWJvYXJkIjogW3Jvd119KQoKCmRlZiBhdXRvX3NjYW4oKToKICAgIGlmIHNbImluaXQiXSBhbmQgbm90IHNbImF1dG8iXToKICAgICAgICByZXR1cm4KICAgIGl0ZW1zID0gY29sbGVjdChUcnVlKQogICAgc2VudCA9IHNldChzWyJzZW50Il0pCiAgICBob3QgPSBbZSBmb3IgZSBpbiBob3RfZW50cmllcyhpdGVtcykgaWYgbm90IGFueShpIGluIHNlbnQgZm9yIGkgaW4gZVsiaWRzIl0pXQogICAgaWYgbm90IHNbImluaXQiXToKICAgICAgICBzWyJzZW50Il0gPSBbaSBmb3IgZSBpbiBob3QgZm9yIGkgaW4gZVsiaWRzIl1dWy0zMDAwOl0KICAgICAgICBzWyJpbml0Il0gPSBUcnVlCiAgICAgICAgc2F5KCLinIUg0JHQvtGCINC30LDQv9GD0YnQtdC9LiDQndCw0LbQuNC80LDQuSDQutC90L7Qv9C60Lgg0LLQvdC40LfRgy4g0JPQvtGA0Y/Rh9C10LUg0LHRg9C00YMg0L/RgNC40YHRi9C70LDRgtGMINGB0LDQvCwg0L/QvtC60LAg0LLQutC70Y7Rh9C10L3QviDwn5SUINCQ0LLRgtC+LiIsIGtiPVRydWUpCiAgICAgICAgcmV0dXJuCiAgICBub3cgPSB0aW1lLnRpbWUoKQogICAgZnJlc2ggPSBzb3J0ZWQoW2UgZm9yIGUgaW4gaG90IGlmIG5vdyAtIGVbInRzIl0gPCAzICogMzYwMF0sIGtleT1sYW1iZGEgZTogZVsidHMiXSlbLVBVU0hfTUFYOl0KICAgIGZvciBlIGluIGZyZXNoOgogICAgICAgIHQgPSBodG1sLmVzY2FwZShlWyJ0aXRsZSJdWzoyMDBdKQogICAgICAgIHUgPSBodG1sLmVzY2FwZShlWyJsaW5rIl0sIHF1b3RlPVRydWUpCiAgICAgICAgaGVhZCA9ICLwn5SlICIgKyAoIiwgIi5qb2luKGVbInNyY3MiXVs6NV0pIGlmIGxlbihlWyJzcmNzIl0pID4gMSBlbHNlIGVbInNyY3MiXVswXSkKICAgICAgICBkID0gKCJcbjxpPiIgKyBodG1sLmVzY2FwZShlWyJkZXNjIl0pICsgIjwvaT4iKSBpZiBlLmdldCgiZGVzYyIpIGVsc2UgIiIKICAgICAgICBzYXkoZid7aGVhZH1cbjxhIGhyZWY9Int1fSI+PGI+e3R9PC9iPjwvYT57ZH1cbvCflZAge2FnbyhlWyJ0cyJdKX0nKQogICAgc1sic2VudCJdID0gKHNbInNlbnQiXSArIFtpIGZvciBlIGluIGhvdCBmb3IgaSBpbiBlWyJpZHMiXV0pWy0zMDAwOl0KCgpkZWYgb25fbWVzc2FnZShtKToKICAgIHQgPSAobS5nZXQoInRleHQiKSBvciAiIikuc3RyaXAoKQogICAgbG93ID0gdC5sb3dlcigpCiAgICBpZiBsb3cgaW4gKCIvc3RhcnQiLCAic3RhcnQiLCAiL2hlbHAiLCAiaGVscCIsICLQv9C+0LzQvtGJ0YwiKToKICAgICAgICBzYXkoItCf0YDQuNCy0LXRgiEgIiArIEhFTFAsIGtiPVRydWUpCiAgICBlbGlmIGxvdyBpbiAoIvCflJQg0LDQstGC0L4g0LLQutC7IiwgItCw0LLRgtC+INCy0LrQuyIpOgogICAgICAgIHNbImF1dG8iXSA9IFRydWUKICAgICAgICBzYXkoIvCflJQg0JPQvtGA0Y/Rh9C10LUg0LHRg9C00YMg0L/RgNC40YHRi9C70LDRgtGMINGB0LDQvCIsIGtiPVRydWUpCiAgICBlbGlmIGxvdyBpbiAoIvCflJUg0LDQstGC0L4g0LLRi9C60LsiLCAi0LDQstGC0L4g0LLRi9C60LsiKToKICAgICAgICBzWyJhdXRvIl0gPSBGYWxzZQogICAgICAgIHNheSgi8J+UlSDQkNCy0YLQvtC80LDRgtC40YfQtdGB0LrQsNGPINC+0YLQv9GA0LDQstC60LAg0LLRi9C60LvRjtGH0LXQvdCwLCDQvdC+0LLQvtGB0YLQuCDRgtC+0LvRjNC60L4g0L/QviDQutC90L7Qv9C60LDQvCIsIGtiPVRydWUpCiAgICBlbGlmIHQgaW4gTEFCRUxTOgogICAgICAgIHRleHQsIG1hcmt1cCA9IHJlbmRlcihMQUJFTFNbdF0sIDApCiAgICAgICAgc2F5KHRleHQsIG1hcmt1cCkKICAgIGVsaWYgdDoKICAgICAgICBzYXkoSEVMUCwga2I9VHJ1ZSkKCgpkZWYgb25fY2FsbGJhY2soY3EpOgogICAgZGF0YSA9IGNxLmdldCgiZGF0YSIsICIiKQogICAgbXNnID0gY3EuZ2V0KCJtZXNzYWdlIikgb3Ige30KICAgIHRyeToKICAgICAgICBraW5kLCBrZXksIHBhZ2UgPSBkYXRhLnNwbGl0KCI6IikKICAgICAgICB0ZXh0LCBtYXJrdXAgPSByZW5kZXIoa2V5LCBpbnQocGFnZSksIGZvcmNlPShraW5kID09ICJyIikpCiAgICAgICAgdGcoImVkaXRNZXNzYWdlVGV4dCIsIGNoYXRfaWQ9Q0hBVCwgbWVzc2FnZV9pZD1tc2cuZ2V0KCJtZXNzYWdlX2lkIiksIHRleHQ9dGV4dCwKICAgICAgICAgICBwYXJzZV9tb2RlPSJIVE1MIiwgZGlzYWJsZV93ZWJfcGFnZV9wcmV2aWV3PSJ0cnVlIiwgcmVwbHlfbWFya3VwPW1hcmt1cCkKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgcGFzcwogICAgdGcoImFuc3dlckNhbGxiYWNrUXVlcnkiLCBjYWxsYmFja19xdWVyeV9pZD1jcVsiaWQiXSkKCgpkZWYgaGFuZGxlKHUpOgogICAgc1sib2Zmc2V0Il0gPSB1WyJ1cGRhdGVfaWQiXSArIDEKICAgIGlmICJjYWxsYmFja19xdWVyeSIgaW4gdToKICAgICAgICBjcSA9IHVbImNhbGxiYWNrX3F1ZXJ5Il0KICAgICAgICBpZiBzdHIoKChjcS5nZXQoIm1lc3NhZ2UiKSBvciB7fSkuZ2V0KCJjaGF0Iikgb3Ige30pLmdldCgiaWQiKSkgPT0gQ0hBVDoKICAgICAgICAgICAgb25fY2FsbGJhY2soY3EpCiAgICBlbGlmICJtZXNzYWdlIiBpbiB1OgogICAgICAgIG0gPSB1WyJtZXNzYWdlIl0KICAgICAgICBpZiBzdHIoKG0uZ2V0KCJjaGF0Iikgb3Ige30pLmdldCgiaWQiKSkgPT0gQ0hBVDoKICAgICAgICAgICAgb25fbWVzc2FnZShtKQoKCmRlZiBtYWluKCk6CiAgICBnbG9iYWwgcwogICAgcyA9IGxvYWQoKQogICAgZW5kID0gdGltZS50aW1lKCkgKyBSVU5fU0VDT05EUwogICAgbGFzdCA9IDAKICAgIHdoaWxlIFRydWU6CiAgICAgICAgbGVmdCA9IGVuZCAtIHRpbWUudGltZSgpCiAgICAgICAgaWYgbGVmdCA8PSAwOgogICAgICAgICAgICBicmVhawogICAgICAgIHdhaXQgPSBpbnQobWluKDE1LCBtYXgoMSwgbGVmdCkpKQogICAgICAgIHVwcyA9IFtdCiAgICAgICAgdHJ5OgogICAgICAgICAgICByID0gcmVxdWVzdHMuZ2V0KGYie0FQSX0vZ2V0VXBkYXRlcyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGFyYW1zPXsib2Zmc2V0Ijogc1sib2Zmc2V0Il0sICJ0aW1lb3V0Ijogd2FpdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJhbGxvd2VkX3VwZGF0ZXMiOiBqc29uLmR1bXBzKFsibWVzc2FnZSIsICJjYWxsYmFja19xdWVyeSJdKX0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGltZW91dD13YWl0ICsgMTUpLmpzb24oKQogICAgICAgICAgICB1cHMgPSByLmdldCgicmVzdWx0IiwgW10pCiAgICAgICAgICAgIGlmIG5vdCByLmdldCgib2siKToKICAgICAgICAgICAgICAgIHByaW50KCJnZXRVcGRhdGVzOiIsIHIpCiAgICAgICAgICAgICAgICB0aW1lLnNsZWVwKDMpCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICBwcmludCgiZ2V0VXBkYXRlcyBlcnJvcjoiLCByZXByKGUpKQogICAgICAgICAgICB0aW1lLnNsZWVwKDMpCiAgICAgICAgdHJ5OgogICAgICAgICAgICBmb3IgdSBpbiB1cHM6CiAgICAgICAgICAgICAgICBoYW5kbGUodSkKICAgICAgICAgICAgaWYgdGltZS50aW1lKCkgLSBsYXN0ID49IFNDQU5fRVZFUlk6CiAgICAgICAgICAgICAgICBsYXN0ID0gdGltZS50aW1lKCkKICAgICAgICAgICAgICAgIGF1dG9fc2NhbigpCiAgICAgICAgICAgIGlmIHVwczoKICAgICAgICAgICAgICAgIHNhdmUoKQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgcHJpbnQoImVycm9yOiIsIHJlcHIoZSkpCiAgICAgICAgICAgIHRpbWUuc2xlZXAoMykKICAgIHNhdmUoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK").decode())
+import os, re, json, time, html, hashlib, email.utils
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
+import requests
+
+TOKEN = os.environ.get("TELEGRAM_TOKEN") or os.environ["BOT_TOKEN"]
+CHAT = str(os.environ.get("CHAT_ID") or "7365523999")
+API = f"https://api.telegram.org/bot{TOKEN}"
+F = "state_news.json"
+RUN_SECONDS = int(os.environ.get("RUN_SECONDS", "21000"))
+SCAN_EVERY = int(os.environ.get("SCAN_EVERY", "60"))
+PS = 6
+HOT_N = 3
+PUSH_MAX = 5
+UA = {"User-Agent": "Mozilla/5.0 (compatible; NewsBot/1.0)"}
+
+
+def gn(site, lang="en"):
+    if lang == "ru":
+        return f"https://news.google.com/rss/search?q=site:{site}+when:1d&hl=ru&gl=RU&ceid=RU:ru"
+    return f"https://news.google.com/rss/search?q=site:{site}+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+
+SRC = {
+    "reuters": ("Reuters", [gn("reuters.com")]),
+    "ap": ("AP", [gn("apnews.com")]),
+    "bbc": ("BBC", ["https://feeds.bbci.co.uk/news/world/rss.xml", gn("bbc.com")]),
+    "aj": ("Al Jazeera", ["https://www.aljazeera.com/xml/rss/all.xml", gn("aljazeera.com")]),
+    "f24": ("France 24", ["https://www.france24.com/en/rss", gn("france24.com")]),
+    "dw": ("DW", ["https://rss.dw.com/rdf/rss-en-all", gn("dw.com")]),
+    "yna": ("Yonhap", ["https://en.yna.co.kr/RSS/news.xml", gn("en.yna.co.kr")]),
+    "aa": ("AA (RU)", ["https://www.aa.com.tr/ru/rss/default?cat=guncel", gn("aa.com.tr/ru", "ru")]),
+}
+LABELS = {"🔥 Горячее": "hot", "🆕 Свежее": "all", "Reuters": "reuters", "AP": "ap", "BBC": "bbc",
+          "Al Jazeera": "aj", "France 24": "f24", "DW": "dw", "Yonhap": "yna", "AA (RU)": "aa"}
+NAMES = {"hot": "🔥 Горячее", "all": "🆕 Свежее", **{k: v[0] for k, v in SRC.items()}}
+KB = json.dumps({"keyboard": [
+    [{"text": "🔥 Горячее"}, {"text": "🆕 Свежее"}],
+    [{"text": "Reuters"}, {"text": "AP"}, {"text": "BBC"}, {"text": "Al Jazeera"}],
+    [{"text": "France 24"}, {"text": "DW"}, {"text": "Yonhap"}, {"text": "AA (RU)"}],
+    [{"text": "🔔 Авто вкл"}, {"text": "🔕 Авто выкл"}]],
+    "resize_keyboard": True, "one_time_keyboard": True})
+HELP = ("Кнопки внизу:\n"
+        "🔥 Горячее - срочные новости и сюжеты, о которых пишут 3+ издания\n"
+        "🆕 Свежее - последнее со всех источников\n"
+        "Reuters, AP, BBC, Al Jazeera, France 24, DW, Yonhap, AA - лента одного издания\n"
+        "🔔 Авто вкл / 🔕 Авто выкл - присылать горячее самому")
+BREAK = re.compile(r"\b(breaking|urgent|just in|developing)\b|срочно|молния", re.I)
+STOP = set("with from that this have will been were their about after over into says said "
+           "more than amid also what when where which while would could should they them "
+           "your news live updates update video watch report reports".split())
+
+cache = {}
+s = {}
+saved = ""
+
+
+def load():
+    try:
+        d = json.load(open(F, encoding="utf-8"))
+    except Exception:
+        d = {}
+    d.setdefault("offset", 0)
+    d.setdefault("sent", [])
+    d.setdefault("auto", True)
+    d.setdefault("init", False)
+    return d
+
+
+def save():
+    global saved
+    d = json.dumps(s, ensure_ascii=False, sort_keys=True)
+    if d != saved:
+        open(F, "w", encoding="utf-8").write(d)
+        saved = d
+
+
+def tg(method, **data):
+    try:
+        return requests.post(f"{API}/{method}", data=data, timeout=20).json()
+    except Exception:
+        return {}
+
+
+def say(text, markup=None, kb=False):
+    d = {"chat_id": CHAT, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"}
+    if markup or kb:
+        d["reply_markup"] = markup or KB
+    return bool(tg("sendMessage", **d).get("ok"))
+
+
+def ago(ts):
+    sec = max(0, int(time.time() - ts))
+    if sec >= 86400:
+        return f"{sec // 86400} д"
+    if sec >= 3600:
+        return f"{sec // 3600} ч"
+    if sec >= 60:
+        return f"{sec // 60} мин"
+    return "только что"
+
+
+def pdate(t):
+    if not t or not t.strip():
+        return None
+    t = t.strip()
+    try:
+        d = email.utils.parsedate_to_datetime(t)
+    except Exception:
+        try:
+            d = datetime.fromisoformat(t.replace("Z", "+00:00"))
+        except Exception:
+            return None
+    if d.tzinfo is None:
+        d = d.replace(tzinfo=timezone.utc)
+    return d.timestamp()
+
+
+def ln(tag):
+    return tag.split("}")[-1].lower() if isinstance(tag, str) else ""
+
+
+def clean(t):
+    t = html.unescape(re.sub(r"<[^>]+>", " ", html.unescape(t)))
+    t = re.sub(r"\s+", " ", t).strip()
+    return t[:230].rsplit(" ", 1)[0] + "…" if len(t) > 230 else t
+
+
+def parse_feed(b, key, google):
+    root = ET.fromstring(b)
+    out = []
+    for el in root.iter():
+        if ln(el.tag) not in ("item", "entry"):
+            continue
+        title = link = None
+        ts = None
+        desc = ""
+        for c in el:
+            n = ln(c.tag)
+            if n in ("description", "summary", "encoded", "content") and not desc:
+                desc = clean(c.text or "")
+            elif n == "title":
+                title = html.unescape((c.text or "").strip())
+            elif n == "link" and not link:
+                link = (c.text or "").strip() or c.get("href")
+            elif n in ("pubdate", "published", "updated", "date") and ts is None:
+                ts = pdate(c.text)
+        if not title or not link:
+            continue
+        if google:
+            title = re.sub(r"\s+-\s+[^-]{2,40}$", "", title)
+            desc = ""
+        if desc and (len(desc) < 40 or desc.lower().startswith(title.lower()[:40])):
+            desc = ""
+        out.append({"src": key, "title": title, "link": link, "ts": ts or time.time(), "desc": desc,
+                    "id": hashlib.sha1((link or title).encode()).hexdigest()[:12]})
+    return out
+
+
+def fetch(key):
+    for url in SRC[key][1]:
+        try:
+            r = requests.get(url, headers=UA, timeout=15)
+            if r.status_code != 200:
+                continue
+            items = parse_feed(r.content, key, "news.google.com" in url)
+            if items:
+                return key, items
+        except Exception:
+            continue
+    return key, []
+
+
+def collect(force=False):
+    now = time.time()
+    need = [k for k in SRC if force or k not in cache or now - cache[k][0] > 25]
+    if need:
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            for k, items in ex.map(fetch, need):
+                if items or k not in cache:
+                    cache[k] = (now, items)
+    out = []
+    for k in SRC:
+        out += cache.get(k, (0, []))[1]
+    return out
+
+
+def toks(t):
+    return {w for w in re.findall(r"[A-Za-zА-Яа-я0-9]{4,}", t.lower()) if w not in STOP}
+
+
+def same(a, b):
+    sh = len(a & b)
+    return sh >= 3 and sh / max(1, min(len(a), len(b))) >= 0.4
+
+
+def ent(items):
+    items = sorted(items, key=lambda x: -x["ts"])
+    srcs = []
+    for i in items:
+        if SRC[i["src"]][0] not in srcs:
+            srcs.append(SRC[i["src"]][0])
+    r = items[0]
+    d = next((i["desc"] for i in items if i.get("desc")), "")
+    return {"title": r["title"], "link": r["link"], "ts": r["ts"], "srcs": srcs, "desc": d,
+            "ids": [i["id"] for i in items]}
+
+
+def hot_entries(items):
+    now = time.time()
+    rec = [i for i in items if now - i["ts"] < 86400]
+    rec.sort(key=lambda x: -x["ts"])
+    tk = [toks(i["title"]) for i in rec]
+    cl = []
+    for n, i in enumerate(rec):
+        for c in cl:
+            if any(same(tk[n], tk[m]) for m in c):
+                c.append(n)
+                break
+        else:
+            cl.append([n])
+    out = []
+    for c in cl:
+        its = [rec[m] for m in c]
+        e = ent(its)
+        if len(e["srcs"]) >= HOT_N or any(BREAK.search(i["title"]) for i in its):
+            out.append(e)
+    out.sort(key=lambda e: -e["ts"])
+    return out
+
+
+def entries_for(key, force=False):
+    items = collect(force)
+    if key == "hot":
+        return hot_entries(items)
+    if key == "all":
+        its = [i for i in items if time.time() - i["ts"] < 86400]
+    else:
+        its = [i for i in items if i["src"] == key]
+    its.sort(key=lambda x: -x["ts"])
+    return [ent([i]) for i in its[:60]]
+
+
+def line(e, key, n):
+    t = html.escape(e["title"][:170])
+    u = html.escape(e["link"], quote=True)
+    if len(e["srcs"]) >= HOT_N:
+        meta = "🔥 " + ", ".join(e["srcs"][:5])
+    elif key in ("hot", "all"):
+        meta = ", ".join(e["srcs"][:4])
+    else:
+        meta = ""
+    meta = f"🕐 {ago(e['ts'])}" + (" · " + html.escape(meta) if meta else "")
+    d = ("\n<i>" + html.escape(e["desc"]) + "</i>") if e.get("desc") else ""
+    return f'{n}. <a href="{u}"><b>{t}</b></a>{d}\n{meta}'
+
+
+def render(key, page, force=False):
+    es = entries_for(key, force)
+    n = max(1, (len(es) + PS - 1) // PS)
+    page = min(max(page, 0), n - 1)
+    chunk = es[page * PS:(page + 1) * PS]
+    head = f"<b>{html.escape(NAMES[key])}</b> · {page + 1}/{n}"
+    body = [line(e, key, page * PS + k + 1) for k, e in enumerate(chunk)] or ["Пока ничего нет."]
+    row = []
+    if page > 0:
+        row.append({"text": "◀", "callback_data": f"p:{key}:{page - 1}"})
+    row.append({"text": "🔄", "callback_data": f"r:{key}:{page}"})
+    if page < n - 1:
+        row.append({"text": "▶", "callback_data": f"p:{key}:{page + 1}"})
+    return head + "\n\n" + "\n\n".join(body), json.dumps({"inline_keyboard": [row]})
+
+
+def auto_scan():
+    if s["init"] and not s["auto"]:
+        return
+    items = collect(True)
+    sent = set(s["sent"])
+    hot = [e for e in hot_entries(items) if not any(i in sent for i in e["ids"])]
+    if not s["init"]:
+        s["sent"] = [i for e in hot for i in e["ids"]][-3000:]
+        s["init"] = True
+        say("✅ Бот запущен. Нажимай кнопки внизу. Горячее буду присылать сам, пока включено 🔔 Авто.", kb=True)
+        return
+    now = time.time()
+    fresh = sorted([e for e in hot if now - e["ts"] < 3 * 3600], key=lambda e: e["ts"])[-PUSH_MAX:]
+    for e in fresh:
+        t = html.escape(e["title"][:200])
+        u = html.escape(e["link"], quote=True)
+        head = "🔥 " + (", ".join(e["srcs"][:5]) if len(e["srcs"]) > 1 else e["srcs"][0])
+        d = ("\n<i>" + html.escape(e["desc"]) + "</i>") if e.get("desc") else ""
+        say(f'{head}\n<a href="{u}"><b>{t}</b></a>{d}\n🕐 {ago(e["ts"])}')
+    s["sent"] = (s["sent"] + [i for e in hot for i in e["ids"]])[-3000:]
+
+
+def on_message(m):
+    t = (m.get("text") or "").strip()
+    low = t.lower()
+    if low in ("/start", "start", "/help", "help", "помощь"):
+        say("Привет! " + HELP, kb=True)
+    elif low in ("🔔 авто вкл", "авто вкл"):
+        s["auto"] = True
+        say("🔔 Горячее буду присылать сам", kb=True)
+    elif low in ("🔕 авто выкл", "авто выкл"):
+        s["auto"] = False
+        say("🔕 Автоматическая отправка выключена, новости только по кнопкам", kb=True)
+    elif t in LABELS:
+        text, markup = render(LABELS[t], 0)
+        say(text, markup)
+    elif t:
+        say(HELP, kb=True)
+
+
+def on_callback(cq):
+    data = cq.get("data", "")
+    msg = cq.get("message") or {}
+    try:
+        kind, key, page = data.split(":")
+        text, markup = render(key, int(page), force=(kind == "r"))
+        tg("editMessageText", chat_id=CHAT, message_id=msg.get("message_id"), text=text,
+           parse_mode="HTML", disable_web_page_preview="true", reply_markup=markup)
+    except Exception:
+        pass
+    tg("answerCallbackQuery_id", callback_query_id=cq["id"])
+
+
+def handle(u):
+    s["offset"] = u["update_id"] + 1
+    if "callback_query" in u:
+        cq = u["callback_query"]
+        if str(((cq.get("message") or {}).get("chat") or {}).get("id")) == CHAT:
+            on_callback(cq)
+    elif "message" in u:
+        m = u["message"]
+        if str((m.get("chat") or {}).get("id")) == CHAT:
+            on_message(m)
+
+
+def main():
+    global s
+    s = load()
+    end = time.time() + RUN_SECONDS
+    last = 0
+    while True:
+        left = end - time.time()
+        if left <= 0:
+            break
+        wait = int(min(15, max(1, left)))
+        ups = []
+        try:
+            r = requests.get(f"{API}/getUpdates",
+                             params={"offset": s["offset"], "timeout": wait,
+                                     "allowed_updates": json.dumps(["message", "callback_query"])},
+                             timeout=wait + 15).json()
+            ups = r.get("result", [])
+            if not r.get("ok"):
+                print("getUpdates:", r)
+                time.sleep(3)
+        except Exception as e:
+            print("getUpdates error:", repr(e))
+            time.sleep(3)
+        try:
+            for u in ups:
+                handle(u)
+            if time.time() - last >= SCAN_EVERY:
+                last = time.time()
+                auto_scan()
+            if ups:
+                save()
+        except Exception as e:
+            print("error:", repr(e))
+            time.sleep(3)
+    save()
+
+
+if __name__ == "__main__":
+    main()
